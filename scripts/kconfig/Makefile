@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 # ===========================================================================
+x
 # Kernel configuration targets
 # These targets are used from top-level makefile
 
