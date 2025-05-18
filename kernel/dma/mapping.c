@@ -10,15 +10,24 @@
 #include <linux/dma-direct.h>
 #include <linux/dma-noncoherent.h>
 #include <linux/export.h>
+#include <linux/of_reserved_mem.h>
 #include <linux/gfp.h>
 #include <linux/of_device.h>
 #include <linux/of_reserved_mem.h>
 #include <linux/slab.h>
 #include <linux/vmalloc.h>
 
+
 /*
  * Managed DMA API
  */
+#ifndef CONFIG_OF_RESERVED_MEM
+static inline bool of_reserved_mem_device_is_init(struct device *dev)
+{
+    return true; // or false, depending on behavior you want
+}
+#endif
+
 struct dma_devres {
 	size_t		size;
 	void		*vaddr;

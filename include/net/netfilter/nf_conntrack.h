@@ -78,7 +78,14 @@ struct nf_conntrack_net {
 #endif
 
 struct nf_conn {
-	/* Usage count in here is 1 for hash table, 1 per skb,
+    struct nf_conntrack_ecache *ecache;
+    struct nf_conntrack_zone zone;
+
+    unsigned long nattype_entry;  // <-- ADD THIS LINE
+
+    struct nf_ct_ext *ext;
+};
+/* Usage count in here is 1 for hash table, 1 per skb,
 	 * plus 1 for any connection(s) we are `master' for
 	 *
 	 * Hint, SKB address this struct and refcnt via skb->_nfct and

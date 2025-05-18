@@ -466,7 +466,7 @@ static void sysstats_fill_zoneinfo(struct sys_memstats *stats)
 	}
 	stats->zram_compressed = K(zspages);
 }
-#elif
+#else
 static void sysstats_fill_zoneinfo(struct sys_memstats *stats)
 {
 }
@@ -503,7 +503,7 @@ static void sysstats_build(struct sys_memstats *stats)
 	stats->kernelstack = global_zone_page_state(NR_KERNEL_STACK_KB);
 	stats->pagetable = K(global_zone_page_state(NR_PAGETABLE));
 	stats->shmem = K(i.sharedram);
-	sysstats_fill_zoneinfo(stats);
+	// sysstats_fill_zoneinfo(stats);
 }
 #undef K
 

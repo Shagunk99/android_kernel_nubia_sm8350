@@ -471,7 +471,7 @@ static int clocksource_watchdog_kthread(void *data)
 {
 	mutex_lock(&clocksource_mutex);
 	if (__clocksource_watchdog_kthread())
-		clocksource_select();
+		clocksource_select(false);
 	mutex_unlock(&clocksource_mutex);
 	return 0;
 }
